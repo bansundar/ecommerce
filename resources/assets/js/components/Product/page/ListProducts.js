@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {getCustomerOrder} from '../../../api/product';
 
 
 let pids = [];
@@ -16,8 +17,10 @@ class ListProducts extends Component {
         if (target.type === 'checkbox') {
 
             let product_id = target.value;
-            if (jQuery.inArray(product_id, pids) !== -1) {
-                pids.pop(product_id);
+            let index = pids.indexOf(product_id);
+
+            if (index !== -1) {
+                pids.splice(index, 1);
             } else {
                 pids.push(product_id);
             }
@@ -34,7 +37,9 @@ class ListProducts extends Component {
         if (pids.length === 0) {
             alert('empty');
         } else {
-            alert('data');
+            getCustomerOrder(pids).then(response => {
+
+            });
         }
     }
 
@@ -81,7 +86,7 @@ class ListProducts extends Component {
                                             <button className="btn btn-primary btn-xs" data-title="Edit"
                                                     data-toggle="modal"
                                                     data-target="#edit"><span
-                                                className="glyphicon glyphicon-pencil"></span>
+                                                className="glyphicon glyphicon-pencil"/>
                                             </button>
                                         </p>
                                     </td>
@@ -90,7 +95,7 @@ class ListProducts extends Component {
                                             <button className="btn btn-danger btn-xs" data-title="Delete"
                                                     data-toggle="modal"
                                                     data-target="#delete"><span
-                                                className="glyphicon glyphicon-trash"></span>
+                                                className="glyphicon glyphicon-trash"/>
                                             </button>
                                         </p>
                                     </td>

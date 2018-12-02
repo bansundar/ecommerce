@@ -3,7 +3,7 @@ import axios from 'axios';
 let sprintf = require("sprintf-js").sprintf;
 
 const GET_ALL_PRODUCTS_URL = 'api/v1/products';
-const GET_CUSTOMER_ORDER_URL = 'api/v1/customer/order';
+const GET_CUSTOMER_ORDER_URL = 'api/v1/customer/orders';
 
 export function getAllProducts() {
     $.blockUI();
@@ -18,8 +18,8 @@ export function getAllProducts() {
 
 export function getCustomerOrder(pids) {
     $.blockUI();
-    return axios.post(sprintf(GET_CUSTOMER_ORDER_URL), {
-        param: pids
+    return axios.post(sprintf(GET_CUSTOMER_ORDER_URL),{
+        pids
     })
         .then(function (response) {
             $.unblockUI();

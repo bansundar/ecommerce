@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     protected $productService;
 

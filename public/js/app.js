@@ -53900,6 +53900,7 @@ var Header = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_product__ = __webpack_require__(235);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53907,6 +53908,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -53931,8 +53933,10 @@ var ListProducts = function (_Component) {
             if (target.type === 'checkbox') {
 
                 var product_id = target.value;
-                if (jQuery.inArray(product_id, pids) !== -1) {
-                    pids.pop(product_id);
+                var index = pids.indexOf(product_id);
+
+                if (index !== -1) {
+                    pids.splice(index, 1);
                 } else {
                     pids.push(product_id);
                 }
@@ -53949,7 +53953,7 @@ var ListProducts = function (_Component) {
             if (pids.length === 0) {
                 alert('empty');
             } else {
-                alert('data');
+                Object(__WEBPACK_IMPORTED_MODULE_1__api_product__["b" /* getCustomerOrder */])(pids).then(function (response) {});
             }
         }
     }, {
@@ -54109,7 +54113,7 @@ var ListProducts = function (_Component) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getAllProducts;
-/* unused harmony export getCustomerOrder */
+/* harmony export (immutable) */ __webpack_exports__["b"] = getCustomerOrder;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
@@ -54117,7 +54121,7 @@ var ListProducts = function (_Component) {
 var sprintf = __webpack_require__(236).sprintf;
 
 var GET_ALL_PRODUCTS_URL = 'api/v1/products';
-var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/order';
+var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/orders';
 
 function getAllProducts() {
     $.blockUI();
@@ -54132,7 +54136,7 @@ function getAllProducts() {
 function getCustomerOrder(pids) {
     $.blockUI();
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), {
-        param: pids
+        pids: pids
     }).then(function (response) {
         $.unblockUI();
         return response;
