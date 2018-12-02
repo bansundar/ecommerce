@@ -6,15 +6,17 @@ class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.state={
-
+        this.state = {
+            products: {}
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         getAllProducts().then(response => {
             if ('SUCCESS' === response.data.response) {
-
+                this.setState({
+                    products: response.data.products
+                })
             }
         });
     }
@@ -22,7 +24,7 @@ class Index extends Component {
     render() {
         return (
             <div className="row product-page">
-                <ListProducts/>
+                <ListProducts products={this.state.products}/>
                 <div className="col-md-6">
                     Place Order
                 </div>

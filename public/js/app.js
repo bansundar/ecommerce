@@ -53769,15 +53769,23 @@ var Index = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-        _this.state = {};
+        _this.state = {
+            products: {}
+        };
         return _this;
     }
 
     _createClass(Index, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
+
             Object(__WEBPACK_IMPORTED_MODULE_2__api_product__["a" /* getAllProducts */])().then(function (response) {
-                if ('SUCCESS' === response.data.response) {}
+                if ('SUCCESS' === response.data.response) {
+                    _this2.setState({
+                        products: response.data.products
+                    });
+                }
             });
         }
     }, {
@@ -53786,7 +53794,7 @@ var Index = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'row product-page' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Product_page_ListProducts__["a" /* default */], null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Product_page_ListProducts__["a" /* default */], { products: this.state.products }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'col-md-6' },
@@ -53905,16 +53913,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ListProducts = function (_Component) {
     _inherits(ListProducts, _Component);
 
-    function ListProducts() {
+    function ListProducts(props) {
         _classCallCheck(this, ListProducts);
 
-        return _possibleConstructorReturn(this, (ListProducts.__proto__ || Object.getPrototypeOf(ListProducts)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (ListProducts.__proto__ || Object.getPrototypeOf(ListProducts)).call(this, props));
     }
 
     _createClass(ListProducts, [{
         key: "render",
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+
+            if (this.props.products) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "col-md-6" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -54040,7 +54049,7 @@ var sprintf = __webpack_require__(236).sprintf;
 
 var GET_ALL_PRODUCTS_URL = 'api/v1/products';
 
-function getAllProducts(pid) {
+function getAllProducts() {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(sprintf(GET_ALL_PRODUCTS_URL), {}).then(function (response) {
         return response;
     }).catch(function (ex) {

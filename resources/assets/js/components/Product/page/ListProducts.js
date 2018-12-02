@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 
 class ListProducts extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+if(this.props.products)
+
         return (
                 <div className="col-md-6">
                     <h4>List of the Products</h4>

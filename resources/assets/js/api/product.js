@@ -3,7 +3,7 @@ let sprintf = require("sprintf-js").sprintf;
 
 const GET_ALL_PRODUCTS_URL='api/v1/products';
 
-export function getAllProducts(pid) {
+export function getAllProducts() {
     return axios.get(sprintf(GET_ALL_PRODUCTS_URL), {
     })
         .then(function (response) {
