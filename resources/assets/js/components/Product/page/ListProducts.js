@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import OrderList from '../../Order/OrderList';
-import {getCustomerOrder} from '../../../api/product';
+import {getCustomerOrder} from '../../../api/order';
 
 /**
+ *This is to store the product Ids
  *
  * @type {Array}
  */

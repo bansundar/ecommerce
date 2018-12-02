@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\OrderService;
 use Illuminate\Http\Request;
+use App\Service\OrderService;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -28,7 +28,7 @@ class CustomerController extends Controller
      */
     public function __construct(OrderService $orderService)
     {
-        $this->orderService=$orderService;
+        $this->orderService = $orderService;
     }
 
     /**
@@ -37,18 +37,21 @@ class CustomerController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getOrders(Request $request){
+    public function getOrders(Request $request)
+    {
+        $data = ['statusCode' => Config::get('constants.api.bad_request')];
 
         if ($request->isMethod('post')) {
             $pids = $request->input('pids');
 
-          $orders=  $this->orderService->getOrders($pids);
+            //fetch customer orders
+            $orders = $this->orderService->getOrders($pids);
 
             $data = [
                 'response' => Config::get('constants.success'),
                 'statusCode' => Config::get('constants.api.ok'),
                 'message' => 'Fetch all orders',
-                'orders'=>$orders
+                'orders' => $orders
 
             ];
 

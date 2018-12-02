@@ -17,7 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+/**
+ * Route to the api for Product and Orders
+ */
 
 Route::group(['middleware' => 'api', 'prefix' => 'v1'], function()
 {

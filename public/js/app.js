@@ -53709,7 +53709,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 /**
- * This page is render First
+ * This page is render First when application is load
  *
  */
 
@@ -53806,7 +53806,7 @@ var Index = function (_Component) {
         }
 
         /**
-         * Render View
+         * Render View of Products Lists
          *
          * @returns {*}
          */
@@ -53837,7 +53837,7 @@ var Index = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Order_OrderList__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_product__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_order__ = __webpack_require__(240);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53851,6 +53851,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 /**
+ *This is to store the product Ids
  *
  * @type {Array}
  */
@@ -53919,7 +53920,7 @@ var ListProducts = function (_Component) {
             if (pids.length === 0) {
                 alert('empty');
             } else {
-                Object(__WEBPACK_IMPORTED_MODULE_2__api_product__["b" /* getCustomerOrder */])(pids).then(function (response) {
+                Object(__WEBPACK_IMPORTED_MODULE_2__api_order__["a" /* getCustomerOrder */])(pids).then(function (response) {
                     if ('SUCCESS' === response.data.response) {
                         _this2.setState({
                             orders: response.data.orders,
@@ -54052,19 +54053,17 @@ var ListProducts = function (_Component) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getAllProducts;
-/* harmony export (immutable) */ __webpack_exports__["b"] = getCustomerOrder;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 var sprintf = __webpack_require__(236).sprintf;
 
 /**
- * API Urls
+ * Component to Define API URLS for Products
  *
  * @type {string}
  */
 var GET_ALL_PRODUCTS_URL = 'api/v1/products';
-var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/orders';
 
 /**
  *
@@ -54074,22 +54073,6 @@ function getAllProducts() {
     $.blockUI(); //block UI
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(sprintf(GET_ALL_PRODUCTS_URL), {}).then(function (response) {
         $.unblockUI(); //Unblock UI
-        return response;
-    }).catch(function (ex) {
-        $.unblockUI();
-        console.log('Some thing went wrong', ex);
-    });
-}
-
-/**
- *
- * @param pids
- * @returns {Promise<AxiosResponse<any> | never>}
- */
-function getCustomerOrder(pids) {
-    $.blockUI();
-    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), { pids: pids }).then(function (response) {
-        $.unblockUI();
         return response;
     }).catch(function (ex) {
         $.unblockUI();
@@ -54913,6 +54896,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /**
+ *Render the list of Customer Orders
  *
  * @param props
  * @returns {*}
@@ -54966,6 +54950,40 @@ var OrderList = function OrderList(props) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (OrderList);
+
+/***/ }),
+/* 240 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getCustomerOrder;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+var sprintf = __webpack_require__(236).sprintf;
+
+/**
+ * Component to Define API URLS for Customer Orders
+ *
+ * @type {string}
+ */
+var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/orders';
+
+/**
+ *
+ * @param pids
+ * @returns {Promise<AxiosResponse<any> | never>}
+ */
+function getCustomerOrder(pids) {
+    $.blockUI();
+    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), { pids: pids }).then(function (response) {
+        $.unblockUI();
+        return response;
+    }).catch(function (ex) {
+        $.unblockUI();
+        console.log('Some thing went wrong', ex);
+    });
+}
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Product from '../components/Product/Index';
 
 /**
- * This page is render First
+ * This page is render First when application is load
  *
  */
 export default class Main extends Component {

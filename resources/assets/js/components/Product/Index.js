@@ -31,7 +31,7 @@ class Index extends Component {
     }
 
     /**
-     * Render View
+     * Render View of Products Lists
      *
      * @returns {*}
      */

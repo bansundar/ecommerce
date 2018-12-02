@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\ProductService;
 use Illuminate\Http\Request;
+use App\Service\ProductService;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -40,6 +40,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $data = ['statusCode' => Config::get('constants.api.bad_request')];
+
         if ($request->isMethod('get')) {
 
             $products = $this->productService->fetchAll();

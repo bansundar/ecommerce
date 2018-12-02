@@ -1,6 +1,7 @@
 import React from 'react';
 
 /**
+ *Render the list of Customer Orders
  *
  * @param props
  * @returns {*}
