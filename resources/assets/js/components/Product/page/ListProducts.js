@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class ListProducts extends Component {
     render() {
         return (
-
                 <div className="col-md-6">
                     <h4>List of the Products</h4>
                     <div className="table-responsive">

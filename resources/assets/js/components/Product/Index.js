@@ -12,7 +12,6 @@ class Index extends Component {
     }
 
     componentDidMount(){
-
         getAllProducts().then(response => {
             if ('SUCCESS' === response.data.response) {
 

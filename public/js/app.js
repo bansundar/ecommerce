@@ -53776,7 +53776,6 @@ var Index = function (_Component) {
     _createClass(Index, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-
             Object(__WEBPACK_IMPORTED_MODULE_2__api_product__["a" /* getAllProducts */])().then(function (response) {
                 if ('SUCCESS' === response.data.response) {}
             });
