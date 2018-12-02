@@ -53923,7 +53923,13 @@ var ListProducts = function (_Component) {
         key: "render",
         value: function render() {
 
-            if (this.props.products) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            var productData = this.props.products;
+            var products = [];
+            if (productData != null && productData.length > 0) {
+                products = productData;
+            }
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "col-md-6" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -53952,12 +53958,12 @@ var ListProducts = function (_Component) {
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "th",
                                     null,
-                                    "Price"
+                                    "Price($)"
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "th",
                                     null,
-                                    "Weight"
+                                    "Weight(gm)"
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "th",
@@ -53974,56 +53980,60 @@ var ListProducts = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "tbody",
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "tr",
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", className: "checkthis" })
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
-                                    "Mohsin"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
-                                    "5"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
-                                    "6"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
+                            products.map(function (product, index) {
+                                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "tr",
+                                    { key: index },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "p",
-                                        { "data-placement": "top", "data-toggle": "tooltip", title: "Edit" },
+                                        "td",
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", className: "checkthis" })
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        "td",
+                                        null,
+                                        product.name
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        "td",
+                                        null,
+                                        product.price
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        "td",
+                                        null,
+                                        product.weight
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        "td",
+                                        null,
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            "button",
-                                            { className: "btn btn-primary btn-xs", "data-title": "Edit", "data-toggle": "modal", "data-target": "#edit" },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-pencil" })
+                                            "p",
+                                            { "data-placement": "top", "data-toggle": "tooltip", title: "Edit" },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                "button",
+                                                { className: "btn btn-primary btn-xs", "data-title": "Edit", "data-toggle": "modal",
+                                                    "data-target": "#edit" },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-pencil" })
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        "td",
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            "p",
+                                            { "data-placement": "top", "data-toggle": "tooltip", title: "Delete" },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                "button",
+                                                { className: "btn btn-danger btn-xs", "data-title": "Delete", "data-toggle": "modal",
+                                                    "data-target": "#delete" },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-trash" })
+                                            )
                                         )
                                     )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "td",
-                                    null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "p",
-                                        { "data-placement": "top", "data-toggle": "tooltip", title: "Delete" },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            "button",
-                                            { className: "btn btn-danger btn-xs", "data-title": "Delete", "data-toggle": "modal", "data-target": "#delete" },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-trash" })
-                                        )
-                                    )
-                                )
-                            )
+                                );
+                            })
                         )
                     )
                 )
