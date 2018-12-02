@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Header from './Header/Header';
+import Footer from '../components/Footer/Footer';
+import Product from '../components/Product/Index';
 
 export default class Main extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md-8 col-md-offset-2">
-                        <div className="panel panel-default">
-                            <div className="panel-heading">Platute Project</div>
-
-                            <div className="panel-body">
-                                Welcome to Platute Project. Thanks
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Header/>
+                <Product/>
+                <Footer/>
             </div>
         );
     }
