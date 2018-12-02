@@ -53900,7 +53900,8 @@ var Header = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_product__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Order_OrderList__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_product__ = __webpack_require__(235);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53908,6 +53909,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -53922,6 +53924,10 @@ var ListProducts = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (ListProducts.__proto__ || Object.getPrototypeOf(ListProducts)).call(this, props));
 
+        _this.state = {
+            orderList: false,
+            orders: []
+        };
         _this.handleInputChange = _this.handleInputChange.bind(_this);
         return _this;
     }
@@ -53943,29 +53949,40 @@ var ListProducts = function (_Component) {
             } else {
                 console.log('This is not a checkbox');
             }
-            console.log(pids, 'dd');
+            console.log(pids, 'product_ids');
         }
     }, {
         key: 'submitOrder',
         value: function submitOrder(e) {
+            var _this2 = this;
+
             e.preventDefault();
 
             if (pids.length === 0) {
                 alert('empty');
             } else {
-                Object(__WEBPACK_IMPORTED_MODULE_1__api_product__["b" /* getCustomerOrder */])(pids).then(function (response) {});
+                Object(__WEBPACK_IMPORTED_MODULE_2__api_product__["b" /* getCustomerOrder */])(pids).then(function (response) {
+                    if ('SUCCESS' === response.data.response) {
+                        _this2.setState({
+                            orders: response.data.orders,
+                            orderList: true
+                        });
+                    }
+                });
             }
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             var productData = this.props.products;
             var products = [];
             if (productData != null && productData.length > 0) {
                 products = productData;
             }
+
+            console.log(this.state.orders);
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -54034,7 +54051,7 @@ var ListProducts = function (_Component) {
                                                 name: product.name,
                                                 value: product.id,
                                                 onChange: function onChange(e) {
-                                                    return _this2.handleInputChange(e);
+                                                    return _this3.handleInputChange(e);
                                                 } })
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -54091,13 +54108,14 @@ var ListProducts = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
                             { onClick: function onClick(e) {
-                                    return _this2.submitOrder(e);
+                                    return _this3.submitOrder(e);
                                 }, type: 'button',
                                 className: 'btn btn-default pull-right' },
                             'Place Order'
                         )
                     )
-                )
+                ),
+                this.state.orderList && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Order_OrderList__["a" /* default */], { orders: this.state.orders })
             );
         }
     }]);
@@ -54950,6 +54968,65 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         setup(jQuery);
     }
 })();
+
+/***/ }),
+/* 239 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+var OrderList = function OrderList(props) {
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "row" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "col-md-12" },
+            props.orders.map(function (order, index) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "ul",
+                    { className: "list-group", key: index },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "h3",
+                        null,
+                        "Package ",
+                        index + 1
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Items: ",
+                        order.items
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Courier Price: ",
+                        order.courierPrice
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Total Price: ",
+                        order.price
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "li",
+                        { className: "list-group-item" },
+                        "Total Weight: ",
+                        order.totalWeight
+                    )
+                );
+            })
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (OrderList);
 
 /***/ })
 /******/ ]);

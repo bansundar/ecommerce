@@ -2,19 +2,26 @@
 
 namespace App\Repository;
 
+use App\Product;
 use Illuminate\Support\Facades\DB;
 
 
 class OrderRepository
 {
 
-    public function getOrders($pids)
+    public function getTotalWeightAndPrice($pids)
     {
-        $data = DB::table("products")
+        $totalPriceWeight = DB::table("products")
             ->select(DB::raw("SUM(price) as totalPrice, SUM(weight) as totalWeight"))
-            ->whereIn('id',$pids)
+            ->whereIn('id', $pids)
             ->get();
-        print_r($data);
-        exit;
+
+        return $totalPriceWeight;
+
+    }
+
+    public function getProductDetails($pid)
+    {
+        return Product::find($pid);
     }
 }

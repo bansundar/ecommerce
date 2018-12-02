@@ -21,12 +21,13 @@ class CustomerController extends Controller
         if ($request->isMethod('post')) {
             $pids = $request->input('pids');
 
-            $this->orderService->getOrders($pids);
+          $orders=  $this->orderService->getOrders($pids);
 
             $data = [
                 'response' => Config::get('constants.success'),
                 'statusCode' => Config::get('constants.api.ok'),
-                'message' => 'Fetch all products'
+                'message' => 'Fetch all orders',
+                'orders'=>$orders
 
             ];
 

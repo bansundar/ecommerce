@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
+import OrderList from '../../Order/OrderList';
 import {getCustomerOrder} from '../../../api/product';
-
 
 let pids = [];
 
@@ -8,7 +8,10 @@ class ListProducts extends Component {
 
     constructor(props) {
         super(props);
-
+        this.state={
+            orderList:false,
+            orders:[]
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
@@ -28,7 +31,7 @@ class ListProducts extends Component {
         } else {
             console.log('This is not a checkbox');
         }
-        console.log(pids, 'dd');
+        console.log(pids, 'product_ids');
     }
 
     submitOrder(e) {
@@ -38,7 +41,12 @@ class ListProducts extends Component {
             alert('empty');
         } else {
             getCustomerOrder(pids).then(response => {
-
+                if ('SUCCESS' === response.data.response) {
+                    this.setState({
+                        orders: response.data.orders,
+                        orderList:true
+                    })
+                }
             });
         }
     }
@@ -50,6 +58,8 @@ class ListProducts extends Component {
         if (productData != null && productData.length > 0) {
             products = productData;
         }
+
+        console.log(this.state.orders);
 
         return (
             <div className="col-md-12">
@@ -108,6 +118,9 @@ class ListProducts extends Component {
                         </button>
                     </form>
                 </div>
+
+                {this.state.orderList && <OrderList orders={this.state.orders}/>}
+
             </div>
         );
     }
