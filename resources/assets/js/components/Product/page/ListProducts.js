@@ -2,10 +2,19 @@ import React, {Component} from 'react';
 import OrderList from '../../Order/OrderList';
 import {getCustomerOrder} from '../../../api/product';
 
+/**
+ *
+ * @type {Array}
+ */
 let pids = [];
 
 class ListProducts extends Component {
 
+    /**
+     * Constructor
+     *
+     * @param props
+     */
     constructor(props) {
         super(props);
         this.state={
@@ -14,6 +23,12 @@ class ListProducts extends Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
+
+    /**
+     * This function handle the check box value
+     *
+     * @param e
+     */
 
     handleInputChange(e) {
         const target = e.target;
@@ -34,6 +49,11 @@ class ListProducts extends Component {
         console.log(pids, 'product_ids');
     }
 
+    /**
+     * This function is used to submit the products in order
+     *
+     * @param e
+     */
     submitOrder(e) {
         e.preventDefault();
 
@@ -51,6 +71,11 @@ class ListProducts extends Component {
         }
     }
 
+    /**
+     * Renders the view
+     *
+     * @returns {*}
+     */
     render() {
 
         let productData = this.props.products;
@@ -58,8 +83,6 @@ class ListProducts extends Component {
         if (productData != null && productData.length > 0) {
             products = productData;
         }
-
-        console.log(this.state.orders);
 
         return (
             <div className="col-md-12">

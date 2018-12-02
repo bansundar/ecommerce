@@ -6,16 +6,37 @@ use App\Service\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
+/**
+ * Class CustomerController
+ * @package App\Http\Controllers
+ *
+ * Controller that provide APIs:
+ * POST     /api/v1/customers/orders
+ *
+ * @author Sundar Ban
+ */
 class CustomerController extends Controller
 {
-
+    /**
+     * @var OrderService
+     */
     protected $orderService;
 
+    /**
+     * CustomerController constructor.
+     * @param OrderService $orderService
+     */
     public function __construct(OrderService $orderService)
     {
         $this->orderService=$orderService;
     }
 
+    /**
+     * API to fetch the Orders of Customer
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getOrders(Request $request){
 
         if ($request->isMethod('post')) {
@@ -33,7 +54,5 @@ class CustomerController extends Controller
 
         }
         return response()->json($data)->setStatusCode($data['statusCode']);
-
-
     }
 }

@@ -3,23 +3,21 @@
 namespace App\Repository;
 
 use App\Product;
-use Illuminate\Support\Facades\DB;
 
-
+/**
+ * Class OrderRepository
+ * @package App\Repository
+ *
+ * @author Sundar Ban
+ */
 class OrderRepository
 {
-
-    public function getTotalWeightAndPrice($pids)
-    {
-        $totalPriceWeight = DB::table("products")
-            ->select(DB::raw("SUM(price) as totalPrice, SUM(weight) as totalWeight"))
-            ->whereIn('id', $pids)
-            ->get();
-
-        return $totalPriceWeight;
-
-    }
-
+    /**
+     * return product details by ID
+     *
+     * @param $pid
+     * @return mixed
+     */
     public function getProductDetails($pid)
     {
         return Product::find($pid);

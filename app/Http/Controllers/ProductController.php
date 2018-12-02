@@ -6,16 +6,38 @@ use App\Service\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
+/**
+ * Class ProductController
+ * @package App\Http\Controllers
+ *
+ * Controller that provide APIs:
+ * POST     /api/v1/products
+ *
+ * @author Sundar Ban
+ */
 
 class ProductController extends Controller
 {
+    /**
+     * @var ProductService
+     */
     protected $productService;
 
+    /**
+     * ProductController constructor.
+     * @param ProductService $productService
+     */
     public function __construct(ProductService $productService)
     {
         $this->productService=$productService;
     }
 
+    /**
+     * API to fetch all the products
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         if ($request->isMethod('get')) {

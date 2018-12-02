@@ -53691,13 +53691,11 @@ module.exports = ReactDOMInvalidARIAHook;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Header_Header__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Footer_Footer__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Product_Index__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Product_Index__ = __webpack_require__(231);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53710,7 +53708,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
+/**
+ * This page is render First
+ *
+ */
 
 var Main = function (_Component) {
     _inherits(Main, _Component);
@@ -53724,24 +53725,22 @@ var Main = function (_Component) {
     _createClass(Main, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 'div',
                 { className: 'container' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Header_Header__["a" /* default */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Product_Index__["a" /* default */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Footer_Footer__["a" /* default */], null)
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Product_Index__["a" /* default */], null)
             );
         }
     }]);
 
     return Main;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Main);
 
 
 if (document.getElementById('app')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Main, null), document.getElementById('app'));
+    __WEBPACK_IMPORTED_MODULE_0_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(Main, null), document.getElementById('app'));
 }
 
 /***/ }),
@@ -53769,6 +53768,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Index = function (_Component) {
     _inherits(Index, _Component);
 
+    /**
+     * Constructor
+     *
+     * @param props
+     */
     function Index(props) {
         _classCallCheck(this, Index);
 
@@ -53779,6 +53783,13 @@ var Index = function (_Component) {
         };
         return _this;
     }
+
+    /**
+     * This function is called when render this component
+     *
+     * React Function
+     */
+
 
     _createClass(Index, [{
         key: 'componentDidMount',
@@ -53793,6 +53804,13 @@ var Index = function (_Component) {
                 }
             });
         }
+
+        /**
+         * Render View
+         *
+         * @returns {*}
+         */
+
     }, {
         key: 'render',
         value: function render() {
@@ -53810,90 +53828,8 @@ var Index = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Index);
 
 /***/ }),
-/* 232 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var Footer = function (_Component) {
-    _inherits(Footer, _Component);
-
-    function Footer() {
-        _classCallCheck(this, Footer);
-
-        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
-    }
-
-    _createClass(Footer, [{
-        key: "render",
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                { className: "row" },
-                "This is footer"
-            );
-        }
-    }]);
-
-    return Footer;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Footer);
-
-/***/ }),
-/* 233 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var Header = function (_Component) {
-    _inherits(Header, _Component);
-
-    function Header() {
-        _classCallCheck(this, Header);
-
-        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-    }
-
-    _createClass(Header, [{
-        key: "render",
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                { className: "row" },
-                "This is header"
-            );
-        }
-    }]);
-
-    return Header;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Header);
-
-/***/ }),
+/* 232 */,
+/* 233 */,
 /* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53914,11 +53850,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+/**
+ *
+ * @type {Array}
+ */
 var pids = [];
 
 var ListProducts = function (_Component) {
     _inherits(ListProducts, _Component);
 
+    /**
+     * Constructor
+     *
+     * @param props
+     */
     function ListProducts(props) {
         _classCallCheck(this, ListProducts);
 
@@ -53931,6 +53876,12 @@ var ListProducts = function (_Component) {
         _this.handleInputChange = _this.handleInputChange.bind(_this);
         return _this;
     }
+
+    /**
+     * This function handle the check box value
+     *
+     * @param e
+     */
 
     _createClass(ListProducts, [{
         key: 'handleInputChange',
@@ -53951,6 +53902,13 @@ var ListProducts = function (_Component) {
             }
             console.log(pids, 'product_ids');
         }
+
+        /**
+         * This function is used to submit the products in order
+         *
+         * @param e
+         */
+
     }, {
         key: 'submitOrder',
         value: function submitOrder(e) {
@@ -53971,6 +53929,13 @@ var ListProducts = function (_Component) {
                 });
             }
         }
+
+        /**
+         * Renders the view
+         *
+         * @returns {*}
+         */
+
     }, {
         key: 'render',
         value: function render() {
@@ -53981,8 +53946,6 @@ var ListProducts = function (_Component) {
             if (productData != null && productData.length > 0) {
                 products = productData;
             }
-
-            console.log(this.state.orders);
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -54135,30 +54098,43 @@ var ListProducts = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
-
 var sprintf = __webpack_require__(236).sprintf;
 
+/**
+ * API Urls
+ *
+ * @type {string}
+ */
 var GET_ALL_PRODUCTS_URL = 'api/v1/products';
 var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/orders';
 
+/**
+ *
+ * @returns {Promise<AxiosResponse<any> | never>}
+ */
 function getAllProducts() {
-    $.blockUI();
+    $.blockUI(); //block UI
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(sprintf(GET_ALL_PRODUCTS_URL), {}).then(function (response) {
-        $.unblockUI();
+        $.unblockUI(); //Unblock UI
         return response;
     }).catch(function (ex) {
+        $.unblockUI();
         console.log('Some thing went wrong', ex);
     });
 }
 
+/**
+ *
+ * @param pids
+ * @returns {Promise<AxiosResponse<any> | never>}
+ */
 function getCustomerOrder(pids) {
     $.blockUI();
-    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), {
-        pids: pids
-    }).then(function (response) {
+    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), { pids: pids }).then(function (response) {
         $.unblockUI();
         return response;
     }).catch(function (ex) {
+        $.unblockUI();
         console.log('Some thing went wrong', ex);
     });
 }
@@ -54978,8 +54954,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 var OrderList = function OrderList(props) {
-
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         { className: "row" },

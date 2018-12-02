@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header/Header';
-import Footer from '../components/Footer/Footer';
+import React, {Component} from 'react';
 import Product from '../components/Product/Index';
 
+/**
+ * This page is render First
+ *
+ */
 export default class Main extends Component {
     render() {
         return (
             <div className="container">
-                <Header/>
                 <Product/>
-                <Footer/>
             </div>
         );
     }

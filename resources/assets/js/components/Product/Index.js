@@ -3,7 +3,11 @@ import ListProducts from '../Product/page/ListProducts';
 import {getAllProducts} from "../../api/product";
 
 class Index extends Component {
-
+    /**
+     * Constructor
+     *
+     * @param props
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +15,11 @@ class Index extends Component {
         };
     }
 
+    /**
+     * This function is called when render this component
+     *
+     * React Function
+     */
     componentDidMount() {
         getAllProducts().then(response => {
             if ('SUCCESS' === response.data.response) {
@@ -21,6 +30,11 @@ class Index extends Component {
         });
     }
 
+    /**
+     * Render View
+     *
+     * @returns {*}
+     */
     render() {
         return (
             <div className="row product-page">

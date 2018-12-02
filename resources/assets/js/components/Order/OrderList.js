@@ -1,11 +1,15 @@
 import React from 'react';
 
+/**
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const OrderList = (props) => {
-
     return (
         <div className="row">
             <div className="col-md-12">
-
                 {props.orders.map((order, index) => (
                 <ul className="list-group" key={index}>
                     <h3>Package {index+1}</h3>
