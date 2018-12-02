@@ -8,6 +8,11 @@
 require('./bootstrap');
 
 /**
+ * This is used for blocking UI when any action is in process.
+ */
+require('../js/helper/jquery_library/blockUI');
+
+/**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
