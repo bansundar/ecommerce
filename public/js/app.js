@@ -53985,16 +53985,6 @@ var ListProducts = function (_Component) {
                                         'th',
                                         null,
                                         'Weight(gm)'
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'th',
-                                        null,
-                                        'Edit'
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'th',
-                                        null,
-                                        'Delete'
                                     )
                                 )
                             ),
@@ -54031,38 +54021,6 @@ var ListProducts = function (_Component) {
                                             'td',
                                             null,
                                             product.weight
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'td',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'p',
-                                                { 'data-placement': 'top', 'data-toggle': 'tooltip', title: 'Edit' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'button',
-                                                    { className: 'btn btn-primary btn-xs', 'data-title': 'Edit',
-                                                        'data-toggle': 'modal',
-                                                        'data-target': '#edit' },
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', {
-                                                        className: 'glyphicon glyphicon-pencil' })
-                                                )
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'td',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'p',
-                                                { 'data-placement': 'top', 'data-toggle': 'tooltip', title: 'Delete' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'button',
-                                                    { className: 'btn btn-danger btn-xs', 'data-title': 'Delete',
-                                                        'data-toggle': 'modal',
-                                                        'data-target': '#delete' },
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', {
-                                                        className: 'glyphicon glyphicon-trash' })
-                                                )
-                                            )
                                         )
                                     );
                                 })
