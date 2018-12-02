@@ -25,9 +25,6 @@ class Index extends Component {
         return (
             <div className="row product-page">
                 <ListProducts products={this.state.products}/>
-                <div className="col-md-6">
-                    Place Order
-                </div>
             </div>
         );
     }

@@ -53799,12 +53799,7 @@ var Index = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'row product-page' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Product_page_ListProducts__["a" /* default */], { products: this.state.products }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'col-md-6' },
-                    'Place Order'
-                )
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Product_page_ListProducts__["a" /* default */], { products: this.state.products })
             );
         }
     }]);
@@ -53915,18 +53910,52 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var pids = [];
+
 var ListProducts = function (_Component) {
     _inherits(ListProducts, _Component);
 
     function ListProducts(props) {
         _classCallCheck(this, ListProducts);
 
-        return _possibleConstructorReturn(this, (ListProducts.__proto__ || Object.getPrototypeOf(ListProducts)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ListProducts.__proto__ || Object.getPrototypeOf(ListProducts)).call(this, props));
+
+        _this.handleInputChange = _this.handleInputChange.bind(_this);
+        return _this;
     }
 
     _createClass(ListProducts, [{
-        key: "render",
+        key: 'handleInputChange',
+        value: function handleInputChange(e) {
+            var target = e.target;
+            if (target.type === 'checkbox') {
+
+                var product_id = target.value;
+                if (jQuery.inArray(product_id, pids) !== -1) {
+                    pids.pop(product_id);
+                } else {
+                    pids.push(product_id);
+                }
+            } else {
+                console.log('This is not a checkbox');
+            }
+            console.log(pids, 'dd');
+        }
+    }, {
+        key: 'submitOrder',
+        value: function submitOrder(e) {
+            e.preventDefault();
+
+            if (pids.length === 0) {
+                alert('empty');
+            } else {
+                alert('data');
+            }
+        }
+    }, {
+        key: 'render',
         value: function render() {
+            var _this2 = this;
 
             var productData = this.props.products;
             var products = [];
@@ -53935,110 +53964,133 @@ var ListProducts = function (_Component) {
             }
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                { className: "col-md-6" },
+                'div',
+                { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "h4",
+                    'h4',
                     null,
-                    "List of the Products"
+                    'List of the Products'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "div",
-                    { className: "table-responsive" },
+                    'div',
+                    { className: 'table-responsive' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "table",
-                        { id: "mytable", className: "table table-bordred table-striped" },
+                        'form',
+                        null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "thead",
-                            null,
+                            'table',
+                            { id: 'mytable', className: 'table table-bordred table-striped' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "tr",
+                                'thead',
                                 null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("th", null),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "th",
+                                    'tr',
                                     null,
-                                    "Product Name"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "th",
-                                    null,
-                                    "Price($)"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "th",
-                                    null,
-                                    "Weight(gm)"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "th",
-                                    null,
-                                    "Edit"
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "th",
-                                    null,
-                                    "Delete"
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('th', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'th',
+                                        null,
+                                        'Product Name'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'th',
+                                        null,
+                                        'Price($)'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'th',
+                                        null,
+                                        'Weight(gm)'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'th',
+                                        null,
+                                        'Edit'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'th',
+                                        null,
+                                        'Delete'
+                                    )
                                 )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'tbody',
+                                null,
+                                products.map(function (product, index) {
+                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'tr',
+                                        { key: index },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                type: 'checkbox',
+                                                className: 'check-box',
+                                                name: product.name,
+                                                value: product.id,
+                                                onChange: function onChange(e) {
+                                                    return _this2.handleInputChange(e);
+                                                } })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            product.name
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            product.price
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            product.weight
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'p',
+                                                { 'data-placement': 'top', 'data-toggle': 'tooltip', title: 'Edit' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'button',
+                                                    { className: 'btn btn-primary btn-xs', 'data-title': 'Edit',
+                                                        'data-toggle': 'modal',
+                                                        'data-target': '#edit' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', {
+                                                        className: 'glyphicon glyphicon-pencil' })
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'td',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'p',
+                                                { 'data-placement': 'top', 'data-toggle': 'tooltip', title: 'Delete' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'button',
+                                                    { className: 'btn btn-danger btn-xs', 'data-title': 'Delete',
+                                                        'data-toggle': 'modal',
+                                                        'data-target': '#delete' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', {
+                                                        className: 'glyphicon glyphicon-trash' })
+                                                )
+                                            )
+                                        )
+                                    );
+                                })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "tbody",
-                            null,
-                            products.map(function (product, index) {
-                                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "tr",
-                                    { key: index },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", className: "checkthis" })
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        product.name
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        product.price
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        product.weight
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            "p",
-                                            { "data-placement": "top", "data-toggle": "tooltip", title: "Edit" },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                "button",
-                                                { className: "btn btn-primary btn-xs", "data-title": "Edit", "data-toggle": "modal",
-                                                    "data-target": "#edit" },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-pencil" })
-                                            )
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        "td",
-                                        null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            "p",
-                                            { "data-placement": "top", "data-toggle": "tooltip", title: "Delete" },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                "button",
-                                                { className: "btn btn-danger btn-xs", "data-title": "Delete", "data-toggle": "modal",
-                                                    "data-target": "#delete" },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "glyphicon glyphicon-trash" })
-                                            )
-                                        )
-                                    )
-                                );
-                            })
+                            'button',
+                            { onClick: function onClick(e) {
+                                    return _this2.submitOrder(e);
+                                }, type: 'button',
+                                className: 'btn btn-default pull-right' },
+                            'Place Order'
                         )
                     )
                 )
@@ -54057,16 +54109,31 @@ var ListProducts = function (_Component) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getAllProducts;
+/* unused harmony export getCustomerOrder */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
 
 var sprintf = __webpack_require__(236).sprintf;
 
 var GET_ALL_PRODUCTS_URL = 'api/v1/products';
+var GET_CUSTOMER_ORDER_URL = 'api/v1/customer/order';
 
 function getAllProducts() {
     $.blockUI();
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(sprintf(GET_ALL_PRODUCTS_URL), {}).then(function (response) {
+        $.unblockUI();
+        return response;
+    }).catch(function (ex) {
+        console.log('Some thing went wrong', ex);
+    });
+}
+
+function getCustomerOrder(pids) {
+    $.blockUI();
+    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(sprintf(GET_CUSTOMER_ORDER_URL), {
+        param: pids
+    }).then(function (response) {
         $.unblockUI();
         return response;
     }).catch(function (ex) {
